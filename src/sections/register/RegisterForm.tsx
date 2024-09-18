@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
-import { RegisterFormData, registerSchema } from "@/app/types/schema/register";
+import { RegisterFormData, registerSchema } from "@/types/schema/register";
 import { toast } from "sonner";
 import { redirect } from "next/navigation";
 
