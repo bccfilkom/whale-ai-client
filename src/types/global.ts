@@ -1,3 +1,4 @@
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 interface User {
   username: string;
   name: string;
@@ -5,4 +6,3 @@ interface User {
   password: string;
 }
 
-type Message = { success: string } | { error: string } | { message: string };

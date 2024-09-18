@@ -1,8 +1,8 @@
 import { BASE_URL } from "@/utils/env";
 import axios from "axios";
-import { NextRequest, NextResponse } from "next/server";
+import { NextRequest } from "next/server";
 
-export async function POST(req: NextRequest, res: NextResponse) {
+export async function POST(req: NextRequest) {
   const body = await req.json();
   try {
     const { username, name, email, password } = body;
@@ -12,18 +12,17 @@ export async function POST(req: NextRequest, res: NextResponse) {
       email,
       password,
     };
-    const res = await axios.post(`${BASE_URL}users/register`, requestBody);
-    if (res.status === 200 || res.status === 201) {
+    const response = await axios.post(`${BASE_URL}users/register`, requestBody);
+    if (response.status === 200 || response.status === 201) {
       return new Response(
         JSON.stringify({
           code: 200,
-          ...res.data,
+          ...response.data,
         }),
         { status: 200 }
       );
     }
   } catch (error) {
-    console.log(error);
     if (axios.isAxiosError(error)) {
       return new Response(
         JSON.stringify({

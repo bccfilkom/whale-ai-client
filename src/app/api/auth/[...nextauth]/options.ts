@@ -35,12 +35,12 @@ export const authOptions: NextAuthOptions = {
             }
           );
           return res.data;
-        } catch (err: any) {
-          console.log(err);
-          if (err.response?.status === 500) {
-            throw new Error(err.response.data.data);
+        } catch (err) {
+          if (axios.isAxiosError(err)) {
+            throw new Error(err.response?.data.data);
+          } else {
+            throw new Error("An error occurred during authentication.");
           }
-          throw new Error("An error occurred during authentication.");
         }
       },
     }),
@@ -59,7 +59,7 @@ export const authOptions: NextAuthOptions = {
       session.user.username = token.data.username;
       return session;
     },
-    async jwt({ token, user, account }) {
+    async jwt({ token, user }) {
       if (user) token.id = user.id;
 
       return { ...token, ...user };
