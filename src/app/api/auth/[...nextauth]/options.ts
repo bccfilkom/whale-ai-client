@@ -11,9 +11,9 @@ export const authOptions: NextAuthOptions = {
           label: "Password",
           type: "password",
         },
-        email: {
-          label: "email",
-          type: "email",
+        username: {
+          label: "username",
+          type: "username",
           placeholder: "whaleai@gmail.com",
         },
       },
@@ -21,10 +21,10 @@ export const authOptions: NextAuthOptions = {
       async authorize(credentials) {
         try {
           const res = await axios.post(
-            `${BASE_URL}/login`,
+            `${BASE_URL}users/login`,
             {
               password: credentials?.password,
-              username: credentials?.email,
+              username: credentials?.username,
             },
             {
               headers: {
@@ -34,11 +34,11 @@ export const authOptions: NextAuthOptions = {
               },
             }
           );
-
           return res.data;
         } catch (err: any) {
-          if (err.response?.status === 401) {
-            throw new Error("CredentialsSignin");
+          console.log(err);
+          if (err.response?.status === 500) {
+            throw new Error(err.response.data.data);
           }
           throw new Error("An error occurred during authentication.");
         }
@@ -46,13 +46,17 @@ export const authOptions: NextAuthOptions = {
     }),
   ],
   pages: {
-    signIn: "/signin",
+    signIn: "/login",
   },
   session: {
     strategy: "jwt",
+    maxAge: 60 * 60 * 24,
   },
   callbacks: {
     async session({ session, token }) {
+      session.user.jwtToken = token.data.jwtToken;
+      session.user.refreshToken = token.data.refreshToken;
+      session.user.username = token.data.username;
       return session;
     },
     async jwt({ token, user, account }) {
