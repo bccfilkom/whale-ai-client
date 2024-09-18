@@ -8,9 +8,15 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+      container: {
+        center: true,
+        padding: {
+          DEFAULT: "2rem",
+          sm: "2rem",
+          lg: "5rem",
+          xl: "5rem",
+          "2xl": "6.375rem",
+        },
       },
     },
   },
