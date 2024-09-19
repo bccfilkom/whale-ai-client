@@ -6,8 +6,10 @@ import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 import { LoginFormData, loginSchema } from "@/types/schema/login";
 import { signIn } from "next-auth/react";
+import { redirect } from "next/navigation";
 
 const LoginForm = () => {
+  const ref = document.referrer;
   const [error, setError] = useState<string>("");
   const {
     register,
@@ -39,7 +41,6 @@ const LoginForm = () => {
         }
       } else {
         toast.success("Login Success");
-        const ref = document.referrer;
         window.location.assign(ref);
       }
     } catch (error) {
@@ -49,35 +50,44 @@ const LoginForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="max-w-sm">
-      <h1 className="text-2xl font-medium text-center">Login</h1>
-      <div className="flex flex-col gap-2 [&>input]:mb-3 mt-8">
-        <label htmlFor="username">Username</label>
-        <input {...register("username")} placeholder="username" />
-        {errors.username && (
-          <p className="text-red-500">{errors.username.message}</p>
-        )}
-        <label htmlFor="password">Password</label>
-        <input
-          type="password"
-          {...register("password")}
-          placeholder="Your password"
-          minLength={8}
-        />
-        {errors.password && (
-          <p className="text-red-500">{errors.password.message}</p>
-        )}
+    <div className="flex flex-col items-stretch justify-center h-screen">
+      <form onSubmit={handleSubmit(onSubmit)} className="max-w-sm">
+        <h1 className="text-2xl font-medium text-center">Login</h1>
+        <div className="flex flex-col gap-2 [&>input]:mb-3 mt-8">
+          <label htmlFor="username">Username</label>
+          <input {...register("username")} placeholder="username" />
+          {errors.username && (
+            <p className="text-red-500">{errors.username.message}</p>
+          )}
+          <label htmlFor="password">Password</label>
+          <input
+            type="password"
+            {...register("password")}
+            placeholder="Your password"
+            minLength={8}
+          />
+          {errors.password && (
+            <p className="text-red-500">{errors.password.message}</p>
+          )}
 
-        <button type="submit">Sign up</button>
-      </div>
-      {error && <p className="text-red-500 text-center">{error}</p>}
-      <p className="text-sm text text-foreground">
-        Already have an account?
-        <Link className="text-primary font-medium underline" href="/login">
-          Login
-        </Link>
-      </p>
-    </form>
+          <button type="submit">Login</button>
+        </div>
+        {error && <p className="text-red-500 text-center">{error}</p>}
+
+        <p className="text-sm text text-foreground">
+          Didnt have an account?
+          <Link className="text-primary font-medium underline" href="/register">
+            Register
+          </Link>
+        </p>
+      </form>
+      <button
+        onClick={() => signIn("google", { callbackUrl: ref })}
+        className="w-full rounded-md bg-black py-3 px-4 text-white"
+      >
+        Login With Google
+      </button>
+    </div>
   );
 };
 
