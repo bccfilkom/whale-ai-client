@@ -1,16 +1,18 @@
 "use client";
-import React, { useState } from "react";
+import { LoginFormData, loginSchema } from "@/types/schema/login";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { signIn } from "next-auth/react";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
-import { LoginFormData, loginSchema } from "@/types/schema/login";
-import { signIn } from "next-auth/react";
-import { redirect } from "next/navigation";
 
 const LoginForm = () => {
-  const ref = document.referrer;
+  const [ref, setRef] = useState<string>("");
   const [error, setError] = useState<string>("");
+  useEffect(() => {
+    setRef(document.referrer);
+  }, []);
   const {
     register,
     handleSubmit,
