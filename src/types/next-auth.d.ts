@@ -7,6 +7,7 @@ declare module "next-auth" {
       username: string;
       jwtToken: string;
       refreshToken: string;
+      decoded: DecodedJWT;
     };
   }
 }
