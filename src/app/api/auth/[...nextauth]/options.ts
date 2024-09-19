@@ -1,10 +1,21 @@
-import { API_KEY, BASE_URL, NEXTAUTH_SECRET } from "@/utils/env";
+import {
+  API_KEY,
+  BASE_URL,
+  GOOGLE_CLIENT_ID,
+  GOOGLE_CLIENT_SECRET,
+  NEXTAUTH_SECRET,
+} from "@/utils/env";
 import axios from "axios";
 import { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
+import GoogleProvider from "next-auth/providers/google";
 
 export const authOptions: NextAuthOptions = {
   providers: [
+    GoogleProvider({
+      clientId: GOOGLE_CLIENT_ID || "",
+      clientSecret: GOOGLE_CLIENT_SECRET || "",
+    }),
     CredentialsProvider({
       credentials: {
         password: {
@@ -59,7 +70,18 @@ export const authOptions: NextAuthOptions = {
       session.user.username = token.data.username;
       return session;
     },
-    async jwt({ token, user }) {
+    async jwt({ token, user, account }) {
+      if (account && account.provider && account.provider === "google") {
+        const access_token = account.access_token;
+        try {
+          const res = await axios.post(`${BASE_URL}oauth/login`, {
+            access_token: access_token,
+          });
+          token.data = res.data.data;
+        } catch (error) {
+          console.error("Error during OAuth login:", error);
+        }
+      }
       if (user) token.id = user.id;
 
       return { ...token, ...user };
