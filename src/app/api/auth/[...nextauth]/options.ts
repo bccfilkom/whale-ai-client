@@ -1,3 +1,4 @@
+import { decodeJwt } from "@/utils/decode";
 import {
   API_KEY,
   BASE_URL,
@@ -66,6 +67,7 @@ export const authOptions: NextAuthOptions = {
   callbacks: {
     async session({ session, token }) {
       session.user.jwtToken = token.data.jwtToken;
+      session.user.decoded = decodeJwt(token.data.jwtToken);
       session.user.refreshToken = token.data.refreshToken;
       session.user.username = token.data.username;
       return session;
