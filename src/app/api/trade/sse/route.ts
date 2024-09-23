@@ -28,8 +28,10 @@ export async function GET(req: NextRequest) {
           const chunk = decoder.decode(value, { stream: true });
           controller.enqueue(`data: ${chunk}\n\n`);
         }
-      } catch (error: any) {
-        controller.enqueue(`data: Error: ${error.message}\n\n`);
+      } catch (error) {
+        const errorMessage =
+          error instanceof Error ? error.message : "Unknown error occurred";
+        controller.enqueue(`data: Error: ${errorMessage}\n\n`);
       } finally {
         controller.close();
       }

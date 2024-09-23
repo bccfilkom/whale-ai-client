@@ -7,6 +7,7 @@ interface User {
   password: string;
 }
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 interface DecodedJWT {
   UserId: string;
   exp: number;
