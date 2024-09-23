@@ -7,3 +7,5 @@ export const API_KEY = process.env.API_KEY;
 //GOOGLE
 export const GOOGLE_CLIENT_SECRET = process.env.GOOGLE_CLIENT_SECRET;
 export const GOOGLE_CLIENT_ID = process.env.GOOGLE_CLIENT_ID;
+//SSE OR WEB SOCKET
+export const SSE_URL = process.env.SSE_URL;
