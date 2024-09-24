@@ -8,6 +8,15 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      colors: {
+        "base-black": "#0F0F0F",
+        "base-white": "#FBFBFB",
+        "primary-cream": "#F4F4F4",
+        "primary-dark-blue": "#022D42",
+        "secondary-pale-cream": "#DADAC9",
+        "secondary-pale-yellow": "#F4FFC4",
+        "secondary-pale-blue": "#DADFDF",
+      },
       container: {
         center: true,
         padding: {
