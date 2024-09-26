@@ -3,6 +3,7 @@ import { Urbanist } from "next/font/google";
 import "./globals.css";
 import NextAuthProvider from "@/components/provider/nextauth";
 import { Toaster } from "sonner";
+import Navbar from "@/components/navbar";
 
 export const metadata: Metadata = {
   title: "Whale AI",
@@ -26,7 +27,10 @@ export default function RootLayout({
           theme="dark"
           richColors={true}
         />
-        <NextAuthProvider>{children}</NextAuthProvider>
+        <NextAuthProvider>
+          <Navbar />
+          {children}
+        </NextAuthProvider>
       </body>
     </html>
   );

@@ -11,7 +11,7 @@ const config: Config = {
       colors: {
         "base-black": "#0F0F0F",
         "base-white": "#FBFBFB",
-        "primary-cream": "#F4F4F4",
+        "primary-cream": "#ECECE3",
         "primary-dark-blue": "#022D42",
         "secondary-pale-cream": "#DADAC9",
         "secondary-pale-yellow": "#F4FFC4",
