@@ -19,7 +19,7 @@ export default async function StocksPage() {
             return (
               <div
                 key={market.region}
-                className="space-y-4 bg-white border border-gray-200 py-8 px-6 rounded-xl min-w-60"
+                className="space-y-4 bg-white border text-base-black border-gray-200 py-8 px-6 rounded-xl min-w-60"
               >
                 <h2 className="text-neutral-400">{market.market_type}</h2>
                 <div className="space-y-4">

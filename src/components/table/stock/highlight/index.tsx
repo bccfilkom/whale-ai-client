@@ -12,7 +12,7 @@ const HighlightStockTable = ({
   link: string;
 }) => {
   return (
-    <div className="border border-neutral-200 rounded-xl bg-base-white p-4 font-normal">
+    <div className="text-base-black border border-neutral-200 rounded-xl bg-base-white p-4 font-normal">
       <div className="flex justify-between gap-4 text-lg">
         <h4 className="font-bold ">{title}</h4>
         <Link
