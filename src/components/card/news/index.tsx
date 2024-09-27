@@ -5,7 +5,7 @@ const NewsCard = ({ news }: { news: News }) => {
   return (
     <div
       key={news.title}
-      className="shadow-xl flex flex-col gap-4 md:gap-8 p-4 rounded-lg "
+      className="shadow-xl bg-base-white flex flex-col gap-4 md:gap-8 p-4 rounded-lg "
     >
       <div className="w-full">
         <img
@@ -19,7 +19,7 @@ const NewsCard = ({ news }: { news: News }) => {
           <h3 className="font-bold text-xl md:text-2xl line-clamp-2">
             {news.title}
           </h3>
-          <p className="text-sm md:text-base text-base-black">{news.summary}</p>
+          <p className="text-sm md:text-base">{news.summary}</p>
         </div>
         <div className="w-full flex flex-col gap-4">
           <ul className="overflow-x-auto whitespace-nowrap py-4 space-x-1">

@@ -79,7 +79,7 @@ const Navbar = () => {
           </div>
           {/* Mobile Navbar */}
           <div
-            className="text-secondary-pale-cream self-end cursor-pointer lg:hidden"
+            className="text-secondary-pale-cream self-end cursor-pointer md:hidden"
             onClick={() => setIsOpen(!isOpen)}
           >
             {isOpen ? <X size={40} /> : <Menu size={40} />}
