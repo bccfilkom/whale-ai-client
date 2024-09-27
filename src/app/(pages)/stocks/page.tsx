@@ -1,11 +1,18 @@
+import HighlightStockTable from "@/components/table/stock/highlight";
 import { Market } from "@/types/markets";
+import { HighlightStockResponse } from "@/types/stocks";
 
 export default async function StocksPage() {
   const { getGlobalMarketStatus } = await import("@/services/stocks/markets");
   const markets = (await getGlobalMarketStatus()) as Market[];
+  const { getHighlightStocks } = await import("@/services/stocks");
+  const highlightStocks =
+    (await getHighlightStocks()) as HighlightStockResponse;
   return (
     <main className="container py-10 md:py-20">
-      <h1 className="font-bold text-3xl md:text-6xl">Global Market Open & Close Status</h1>
+      <h2 className="font-bold text-3xl md:text-6xl">
+        Global Market Open & Close Status
+      </h2>
       <section className="py-10">
         <div className="overflow-x-auto whitespace-nowrap flex gap-4 pb-4">
           {markets.map((market) => {
@@ -38,7 +45,26 @@ export default async function StocksPage() {
           })}
         </div>
       </section>
-      
+      <section className="py-10">
+        <h2 className="font-bold text-3xl md:text-6xl">Stock Highlights</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-10 py-10">
+          <HighlightStockTable
+            link=""
+            stocks={highlightStocks.most_actively_traded}
+            title="🔥Most Actively Traded"
+          />
+          <HighlightStockTable
+            link=""
+            stocks={highlightStocks.top_gainers}
+            title="🚀Top Gainers"
+          />
+          <HighlightStockTable
+            link=""
+            stocks={highlightStocks.top_losers}
+            title="🚨Top Losers"
+          />
+        </div>
+      </section>
     </main>
   );
 }
