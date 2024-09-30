@@ -12,4 +12,8 @@ export const SSE_URL = process.env.SSE_URL;
 //THIRD PARTY API
 export const ALPHA_VANTAGE_BASE_URL = process.env.ALPHA_VANTAGE_BASE_URL;
 export const ALPHA_VANTAGE_API_KEY = process.env.ALPHA_VANTAGE_API_KEY;
-
+export const FINANCE_RAPID_API_BASE_URL =
+  process.env.FINANCE_RAPID_API_BASE_URL;
+export const FINANCE_RAPID_API_KEY = process.env.FINANCE_RAPID_API_KEY;
+export const FINNHUB_BASE_URL = process.env.FINNHUB_BASE_URL;
+export const FINNHUB_API_KEY = process.env.FINNHUB_API_KEY;
