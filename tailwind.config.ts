@@ -9,13 +9,25 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        "base-black": "#0F0F0F",
-        "base-white": "#FBFBFB",
-        "primary-cream": "#ECECE3",
-        "primary-dark-blue": "#022D42",
-        "secondary-pale-cream": "#DADAC9",
-        "secondary-pale-yellow": "#F4FFC4",
-        "secondary-pale-blue": "#DADFDF",
+        // Base colors
+        black: "#0F0F0F",
+        white: "#FAFAFA",
+        gray: "#A1A1A1",
+
+        // Primary colors
+        "light-blue-text": "#71BFFF",
+        blue: "#256BED",
+        "blue-end": "#004B9E",
+        "black-start": "#1A1A1A",
+        "black-end": "#000710",
+
+        // Secondary colors
+        green: "#0B806A",
+        "light-green": "#D7FBE6",
+        red: "#B00B0B",
+        "light-red": "#FBD7D7",
+
+        //other
         success: {
           "100": "#20793A",
           "80": "#2AA24E",
@@ -38,6 +50,13 @@ const config: Config = {
           "20": "#FFF8E5",
         },
       },
+      gradientColorStops: () => ({
+        "gradient-blue-start": "#256BED",
+        "gradient-blue-end": "#004B9E",
+
+        "gradient-black-start": "#1A1A1A",
+        "gradient-black-end": "#000710",
+      }),
       container: {
         center: true,
         padding: {

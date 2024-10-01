@@ -5,7 +5,7 @@ const NewsCard = ({ news }: { news: News }) => {
   return (
     <div
       key={news.title}
-      className="shadow-xl bg-base-white flex flex-col gap-4 md:gap-8 p-4 rounded-lg "
+      className="shadow-xl text-base-black bg-base-white flex flex-col gap-4 md:gap-8 p-4 rounded-lg "
     >
       <div className="w-full">
         <img
