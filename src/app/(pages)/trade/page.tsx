@@ -1,4 +1,4 @@
-import SSESection from "@/sections/trade/SSESection";
+import SSESection from "@/app/sections/trade/SSESection";
 
 export default function TradePage() {
   return (
