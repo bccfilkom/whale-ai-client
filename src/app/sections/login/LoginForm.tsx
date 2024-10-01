@@ -39,7 +39,7 @@ const LoginForm = () => {
       if (response?.error) {
         if (
           response.error.includes(
-            "hashedPassword is not the hash of the given password"
+            "Invalid login credentials"
           )
         ) {
           setError("Invalid username or password.");
@@ -111,6 +111,7 @@ const LoginForm = () => {
           >
             Sign In <ArrowRight size={18} />
           </Button>
+          {error && <p className="text-red">{error}</p>}
         </form>
         <div className="flex gap-2.5 text-white items-center w-full justify-center text-xs">
           <hr className="w-20 h-0.5 bg-white" />
