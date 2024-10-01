@@ -14,12 +14,13 @@ export const variantStyles = {
 const Button = ({
   variant = "primary",
   className = "",
-  disabled,
+  disabled = false,
   children,
   ...props
 }: ButtonProps) => {
   return (
     <button
+      disabled={disabled}
       className={`rounded-xl ${variantStyles[variant]} text-white py-2 px-3 ${className}`}
       {...props}
     >
