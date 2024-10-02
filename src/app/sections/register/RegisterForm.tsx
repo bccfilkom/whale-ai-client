@@ -60,17 +60,17 @@ const RegisterForm = () => {
   };
 
   return (
-    <div className="bg-gradient-to-r from-gradient-black-start to-gradient-black-end rounded-[36px] py-8 md:py-12">
+    <div className="bg-gradient-to-r from-gradient-black-start to-gradient-black-end rounded-[36px] py-8 md:py-12 shadow-2xl">
       <div className="px-4 md:px-14 flex flex-col gap-6">
         <div className="space-y-1">
           <span className="flex items-center gap-0.5">
-            <h1 className="text-2xl font-semibold text-white text-start">
+            <h1 className="text-xl md:text-4xl font-semibold text-white text-start">
               Ready to Get Started?
             </h1>
             <Image src={emojiSmile} alt="smiling emoji" />
           </span>
-          <div className="flex items-center gap-1">
-            <span className="text-white">Already have an account?</span>
+          <div className="flex items-center gap-1 text-xl">
+            <span className="text-xs lg:text-base text-white">Already have an account?</span>
             <Link
               href={"/login"}
               className="text-light-blue-text font-semibold ml-1"
@@ -84,11 +84,10 @@ const RegisterForm = () => {
           className="flex flex-col gap-3 text-white"
           onSubmit={handleSubmit(onSubmit)}
         >
-          <div></div>
           <div className="flex flex-col gap-2 items-start">
             <label htmlFor="username">Username</label>
             <input
-              className="w-full py-2 px-3 text-gray text-xs focus:border-indigo-500 focus:ring-indigo-500 rounded-xl shadow-sm"
+              className="w-full py-2 px-3 text-black text-base focus:border-indigo-500 focus:ring-indigo-500 rounded-xl shadow-sm"
               {...register("username")}
               placeholder="Enter your username"
             />
@@ -99,7 +98,7 @@ const RegisterForm = () => {
           <div className="flex flex-col gap-2 items-start">
             <label htmlFor="name">Full Name</label>
             <input
-              className="w-full py-2 px-3 text-gray text-xs focus:border-indigo-500 focus:ring-indigo-500 rounded-xl shadow-sm"
+              className="w-full py-2 px-3 text-black text-base focus:border-indigo-500 focus:ring-indigo-500 rounded-xl shadow-sm"
               {...register("name")}
               placeholder="Enter Your Full Name"
             />
@@ -108,7 +107,7 @@ const RegisterForm = () => {
           <div className="flex flex-col gap-2 items-start">
             <label htmlFor="email">Email</label>
             <input
-              className="w-full py-2 px-3 text-gray text-xs focus:border-indigo-500 focus:ring-indigo-500 rounded-xl shadow-sm"
+              className="w-full py-2 px-3 text-black text-base focus:border-indigo-500 focus:ring-indigo-500 rounded-xl shadow-sm"
               {...register("email")}
               placeholder="Enter Your Email"
             />
@@ -117,7 +116,7 @@ const RegisterForm = () => {
           <div className="flex flex-col gap-2 items-start">
             <label htmlFor="password">Password</label>
             <input
-              className="w-full py-2 px-3 text-gray text-xs focus:border-indigo-500 focus:ring-indigo-500 rounded-xl shadow-sm"
+              className="w-full py-2 px-3 text-black text-base focus:border-indigo-500 focus:ring-indigo-500 rounded-xl shadow-sm"
               type="password"
               {...register("password")}
               placeholder="Enter Your password"
@@ -128,19 +127,19 @@ const RegisterForm = () => {
           </div>
           <Button
             type="submit"
-            className="w-full mt-3 flex justify-center items-center gap-3"
+            className="py-4 w-full mt-3 flex justify-center items-center gap-3"
           >
             Sign Up <ArrowRight size={18} />
           </Button>
         </form>
-        <div className="flex gap-2.5 text-white items-center w-full justify-center text-xs">
+        <div className="flex gap-2.5 text-white items-center w-full justify-center text-base">
           <hr className="w-20 h-0.5 bg-white" />
           <p>Or</p>
           <hr className="w-20 h-0.5 bg-white" />
         </div>
         <Button
           variant="white"
-          className="w-full"
+          className="w-full py-4"
           onClick={() => signIn("google", { callbackUrl: "/" })}
         >
           <div className="flex items-center gap-2.5 justify-center text-black">
