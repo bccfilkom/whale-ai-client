@@ -12,7 +12,7 @@ const config: Config = {
         // Base colors
         black: "#0F0F0F",
         white: "#FAFAFA",
-        gray: "#A1A1A1",
+        gray: "#23232380",
 
         // Primary colors
         "light-blue-text": "#71BFFF",

@@ -4,20 +4,20 @@ const getSentimentColor = (sentiment: SentimentLabelType): string => {
   switch (sentiment) {
     case "Bullish":
     case "Somewhat-Bullish":
-      return "bg-success-80";
+      return "bg-success-80 text-white";
     case "Bearish":
     case "Somewhat-Bearish":
-      return "bg-danger-80";
+      return "bg-danger-80 text-white";
     case "Neutral":
     default:
-      return "bg-gray-500";
+      return "bg-white text-black";
   }
 };
 
 const SentimentLabel = ({ sentiment }: { sentiment: TickerSentiment }) => {
   return (
     <span
-      className={`rounded-2xl text-white px-3 py-2 ${getSentimentColor(
+      className={`rounded-lg px-3 py-2 font-medium ${getSentimentColor(
         sentiment.ticker_sentiment_label
       )}`}
     >
