@@ -8,16 +8,12 @@ import { ArrowRight } from "lucide-react";
 import { signIn } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 
 const LoginForm = () => {
-  const [ref, setRef] = useState<string>("");
   const [error, setError] = useState<string>("");
-  useEffect(() => {
-    setRef(document.referrer);
-  }, []);
   const {
     register,
     handleSubmit,
@@ -37,18 +33,16 @@ const LoginForm = () => {
         callbackUrl: "/",
       });
       if (response?.error) {
-        if (
-          response.error.includes(
-            "Invalid login credentials"
-          )
-        ) {
+        if (response.error.includes("Invalid login credentials")) {
           setError("Invalid username or password.");
         } else {
           setError("An error occurred. Please try again.");
         }
       } else {
         toast.success("Login Success");
-        window.location.assign(ref);
+        setTimeout(() => {
+          window.location.assign("/dashboard");
+        }, 2500);
       }
     } catch (error) {
       setError("An unexpected error occurred. Please try again.");
