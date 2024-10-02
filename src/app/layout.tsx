@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { Urbanist } from "next/font/google";
 import { Toaster } from "sonner";
 import "./globals.css";
+import ProgressBar from "@/components/progress-bar";
 
 export const metadata: Metadata = {
   title: "Whale AI",
@@ -20,6 +21,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${urbanist.className} bg-black`}>
+        <ProgressBar />
         <Toaster
           position="top-center"
           pauseWhenPageIsHidden={true}
