@@ -1,14 +1,11 @@
 "use client";
-import { Bell, CircleUser, Menu, X } from "lucide-react";
-import { signIn, signOut, useSession } from "next-auth/react";
+import accountLogo from "@/assets/icon/account.svg";
+import navLogo from "@/assets/icon/logo/navbar.png";
+import notifLogo from "@/assets/icon/notif.svg";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
-import navLogo from "@/assets/icon/logo/navbar.png";
 import Button from "../button";
-import notifLogo from "@/assets/icon/notif.svg";
-import accountLogo from "@/assets/icon/account.svg";
 
 const Navbar = () => {
   // const { status: session } = useSession();
