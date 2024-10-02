@@ -1,14 +1,11 @@
 import Navbar from "@/components/navbar";
-import { getServerSession } from "next-auth";
-import { redirect } from "next/navigation";
-import { authOptions } from "./api/auth/[...nextauth]/options";
 import Hero from "./sections/home/Hero";
 
 export default async function Home() {
-  const session = await getServerSession(authOptions);
-  if (session) {
-    redirect("/dashboard");
-  }
+  // const session = await getServerSession(authOptions);
+  // if (session) {
+  //   redirect("/dashboard");
+  // }
   return (
     <main>
       <Navbar />
