@@ -1,14 +1,13 @@
+import NextAuthProvider from "@/components/provider/nextauth";
 import type { Metadata } from "next";
 import { Urbanist } from "next/font/google";
-import "./globals.css";
-import NextAuthProvider from "@/components/provider/nextauth";
 import { Toaster } from "sonner";
-import Navbar from "@/components/navbar";
+import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Whale AI",
   description:
-    "Whale AI bertujuan untuk memberikan analisis pasar saham yang mendalam dan rekomendasi portofolio berbasis profil risiko pengguna.",
+    "Connecting Everyday Investors to Stock Market Opportunities. We simplify stock trading with tailored insights and tools, making it easy for anyone to grow their portfolio confidently.",
 };
 
 const urbanist = Urbanist({ subsets: ["latin"] });
@@ -20,17 +19,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={urbanist.className}>
+      <body className={`${urbanist.className} bg-black`}>
         <Toaster
           position="top-center"
           pauseWhenPageIsHidden={true}
           theme="dark"
           richColors={true}
         />
-        <NextAuthProvider>
-          <Navbar />
-          {children}
-        </NextAuthProvider>
+        <NextAuthProvider>{children}</NextAuthProvider>
       </body>
     </html>
   );
