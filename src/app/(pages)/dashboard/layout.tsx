@@ -2,6 +2,7 @@ import { authOptions } from "@/app/api/auth/[...nextauth]/options";
 import accountLogo from "@/assets/icon/account.svg";
 import notifLogo from "@/assets/icon/notif.svg";
 import Button from "@/components/button";
+import Sidebar from "@/components/sidebar";
 import { getServerSession } from "next-auth";
 import Image from "next/image";
 import Link from "next/link";
@@ -15,7 +16,7 @@ export default async function DashboardLayout({
 
   return (
     <main className="w-full flex flex-row">
-      <div className="w-[20vw] bg-gray"></div>
+      <Sidebar />
       <div className="container w-[80vw] flex flex-col py-10">
         <div className="hidden md:flex gap-9 items-center self-end">
           {session ? (
@@ -33,7 +34,7 @@ export default async function DashboardLayout({
           )}
           <Image src={notifLogo} alt="notif-logo" />
           <Image src={accountLogo} alt="account-logo" />
-        </div>{" "}
+        </div>
         {children}
       </div>
     </main>
