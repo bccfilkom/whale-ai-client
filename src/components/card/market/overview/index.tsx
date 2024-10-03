@@ -3,6 +3,8 @@ import Image from "next/image";
 import React from "react";
 import marketIcon from "@/assets/icon/market-market.svg";
 
+
+
 const MarketOverviewCard = ({ market }: { market: Market }) => {
   return (
     <div
