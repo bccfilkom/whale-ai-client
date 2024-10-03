@@ -1,3 +1,8 @@
+import MarketOverview from "@/app/sections/dashboard/main/MarketOverview";
+
 export default function DashboardPage() {
-  return <main></main>;
+  return <main>
+    <MarketOverview />
+    
+  </main>;
 }
