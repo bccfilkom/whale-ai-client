@@ -1,17 +1,17 @@
 "use client";
-import { X } from "lucide-react";
-import { useSession } from "next-auth/react";
-import Image from "next/image";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-import navLogo from "@/assets/icon/logo/navbar.png";
 import dashboardLogoChart from "@/assets/icon/dashboard-chart.svg";
 import dashboardLogoMain from "@/assets/icon/dashboard-main.svg";
 import dashboardLogoNews from "@/assets/icon/dashboard-news.svg";
 import dashboardLogoPorto from "@/assets/icon/dashboard-portfolio.svg";
 import dashboardLogoRisk from "@/assets/icon/dashboard-risk.svg";
-import { useEffect, useState } from "react";
+import navLogo from "@/assets/icon/logo/navbar.png";
 import Button from "@/components/button";
+import { X } from "lucide-react";
+import { useSession } from "next-auth/react";
+import Image from "next/image";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useEffect } from "react";
 
 const FloatingSidebar = ({
   isOpen,
@@ -32,7 +32,7 @@ const FloatingSidebar = ({
   return (
     isOpen && (
       <aside
-        className={`items-center py-28 px-8 bg-gray/100 opacity-100 z-50 fixed left-0 top-0 flex h-screen w-[350px] flex-col bg-dark-80 shadow-xl transition-transform duration-1000 ease-in-out transform ${
+        className={`items-center py-28 px-8 bg-gray/100 opacity-100 z-50 fixed left-0 top-0 flex xl:hidden h-screen w-[350px] flex-col bg-dark-80 shadow-xl transition-transform duration-1000 ease-in-out transform ${
           isOpen ? "translate-x-0" : "-translate-x-full"
         }`}
       >
@@ -62,7 +62,7 @@ const FloatingSidebar = ({
               </Link>
             ))}
             <div className="self-center">
-              {session ? (
+              {session == "authenticated" ? (
                 <Link href={"/logout"}>
                   <Button>Sign Out</Button>
                 </Link>

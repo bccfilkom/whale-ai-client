@@ -2,16 +2,23 @@
 import { Menu } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
 import Button from "../button";
 import navLogo from "@/assets/icon/logo/navbar.png";
 import notifLogo from "@/assets/icon/notif.svg";
 import accountLogo from "@/assets/icon/account.svg";
 import React from "react";
 import FloatingSidebar from "../sidebar/floating";
+import { useSession } from "next-auth/react";
+import { useEffect, useState } from "react";
 
 const Navbar = () => {
+  const { status: session } = useSession();
   const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
   return (
     <>
@@ -32,11 +39,20 @@ const Navbar = () => {
             <h3>WhaleAI</h3>
           </Link>
           <div className="hidden md:flex gap-9 items-center">
-            <Link href={"/register"}>
-              <Button rounded="4xl" className="rounded-[36px]">
-                Sign Up
-              </Button>
-            </Link>
+            {isClient && session === "unauthenticated" ? (
+              <Link href={"/register"}>
+                <Button rounded="4xl" className="rounded-[36px]">
+                  Sign Up
+                </Button>
+              </Link>
+            ) : isClient && session === "authenticated" ? (
+              <Link href={"/logout"}>
+                <Button rounded="4xl" className="rounded-[36px]">
+                  Sign Out
+                </Button>
+              </Link>
+            ) : null}
+
             <Image src={notifLogo} alt="notif-logo" />
             <Image src={accountLogo} alt="account-logo" />
           </div>
