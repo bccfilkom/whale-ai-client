@@ -45,8 +45,9 @@ const RegisterForm = () => {
         }, 1500);
       } else {
         const errorData = await res.json();
+        console.log(errorData)
         toast.error(
-          errorData.data.includes("duplicate")
+          errorData.data.includes("exists")
             ? "Username or email already exists"
             : "Server error, Please try again later"
         );
@@ -70,7 +71,9 @@ const RegisterForm = () => {
             <Image src={emojiSmile} alt="smiling emoji" />
           </span>
           <div className="flex items-center gap-1 text-xl">
-            <span className="text-xs lg:text-base text-white">Already have an account?</span>
+            <span className="text-xs lg:text-base text-white">
+              Already have an account?
+            </span>
             <Link
               href={"/login"}
               className="text-light-blue-text font-semibold ml-1"

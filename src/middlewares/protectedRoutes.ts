@@ -17,9 +17,8 @@ export default function protectedRoutes(
     if (requireAuth.some((path) => pathName.startsWith(path))) {
       const token = await getToken({
         req,
-        secret: NEXTAUTH_SECRET || "secret",
+        secret: NEXTAUTH_SECRET,
       });
-
       if (!token) {
         const url = new URL("/login", req.url);
         url.searchParams.set("callbackUrl", encodeURI(req.url));

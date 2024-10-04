@@ -8,12 +8,10 @@ import { ArrowRight } from "lucide-react";
 import { signIn } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 
 const LoginForm = () => {
-  const [error, setError] = useState<string>("");
   const {
     register,
     handleSubmit,
@@ -34,9 +32,9 @@ const LoginForm = () => {
       });
       if (response?.error) {
         if (response.error.includes("Invalid login credentials")) {
-          setError("Invalid username or password.");
+          toast.error("Invalid username or password.");
         } else {
-          setError("An error occurred. Please try again.");
+          toast.error("An error occurred. Please try again.");
         }
       } else {
         toast.success("Login Success");
@@ -45,7 +43,7 @@ const LoginForm = () => {
         }, 2500);
       }
     } catch (error) {
-      setError("An unexpected error occurred. Please try again.");
+      toast.error("An unexpected error occurred. Please try again.");
       console.error(error);
     }
   };
@@ -61,7 +59,9 @@ const LoginForm = () => {
             <Image src={emojiLove} alt="lovely emoji" />
           </span>
           <div className="flex items-center gap-1">
-            <span className="text-white text-xs lg:text-base">Don’t have an account?</span>
+            <span className="text-white text-xs lg:text-base">
+              Don’t have an account?
+            </span>
             <Link
               href={"/register"}
               className="text-light-blue-text font-semibold ml-1"
@@ -104,7 +104,6 @@ const LoginForm = () => {
           >
             Sign In <ArrowRight size={18} />
           </Button>
-          {error && <p className="text-red">{error}</p>}
         </form>
         <div className="flex gap-2.5 text-white items-center w-full justify-center text-base">
           <hr className="w-20 h-0.5 bg-white" />
