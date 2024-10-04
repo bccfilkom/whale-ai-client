@@ -36,7 +36,7 @@ const NewsCard = ({ news }: { news: News }) => {
           <a href={news.url} target="_blank" className="w-full">
             <Button
               rounded="4xl"
-              className="w-full py-3 text-[20px] flex justify-center items-center gap-4 "
+              className="w-full text-base md:text-[20px] flex justify-center items-center gap-4 "
             >
               <p>See Details</p>
               <Image alt="arrow" src={seeDetailArrow} />
