@@ -95,7 +95,7 @@ const sidebarItems = [
   {
     image: dashboardLogoRisk,
     title: "Risk Profile",
-    link: "/dashboard/risk-portfolio",
+    link: "/dashboard/risk-profile",
   },
   {
     image: dashboardLogoPorto,
