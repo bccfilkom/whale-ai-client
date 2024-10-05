@@ -101,7 +101,7 @@ const PortfolioTable = ({ userAssets }: { userAssets: Assets[] }) => {
   };
 
   return (
-    <div className="bg-gray/50 rounded-3xl text-white p-6 md:p-9 space-y-4 md:space-y-9 w-full">
+    <div className="bg-gray/50 rounded-3xl text-white p-6 md:p-9 space-y-4 md:space-y-9 w-full whitespace-nowrap max-w-full overflow-x-auto">
       <div className="flex gap-3">
         <Image src={chartIcon} alt="" />
         <h4 className="">My Stocks</h4>
