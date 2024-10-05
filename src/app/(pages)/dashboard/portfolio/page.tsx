@@ -5,6 +5,10 @@ import React from "react";
 import chartIcon from "@/assets/icon/topten-most-active.svg";
 import { HighlightStockResponse } from "@/types/stocks";
 import StockRecommendation from "@/components/stock-recomendation";
+import { StockSearch } from "@/types/stocks/search";
+import Button from "@/components/button";
+import AddAsset from "@/app/sections/dashboard/portfolio/AddAsset";
+
 export default async function DashboardAssetsPage({
   searchParams,
 }: {
@@ -19,7 +23,7 @@ export default async function DashboardAssetsPage({
     (await getHighlightStocks()) as HighlightStockResponse;
   const { searchStocks } = await import("@/services/stocks");
   const stocks = await searchStocks(query);
-  console.log(stocks)
+  const stocksData = stocks.result as StockSearch[];
   return (
     <>
       {userAssetsData ? (
@@ -62,6 +66,7 @@ export default async function DashboardAssetsPage({
                   </tbody>
                 </table>
               </div>
+              <AddAsset stocks={stocksData} />
             </div>
             <div className="flex flex-col gap-9 max-w-full xl:col-span-3">
               <h2 className="text-xl text-white md:text-3xl font-bold">
@@ -78,6 +83,8 @@ export default async function DashboardAssetsPage({
               </div>
             </div>
           </section>
+          <section className="py-10 xl:py-16">
+          </section>
         </main>
       ) : (
         <main className="container flex justify-center items-center h-full py-10 md:py-20">
@@ -89,14 +96,7 @@ export default async function DashboardAssetsPage({
               Let us know the stocks you own, and we will tailor our
               recommendations just for you!
             </p>
-            <div className="w-full py-3 px-9 flex gap-3 bg-gray/50 rounded-3xl">
-              <Search size={40} className="text-white" />
-              <input
-                className="text-white focus:border-none w-full bg-transparent"
-                type="text"
-                placeholder="Search for companies"
-              />
-            </div>
+            <AddAsset stocks={stocksData} />
           </div>
         </main>
       )}

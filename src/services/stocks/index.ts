@@ -35,7 +35,6 @@ const searchStocks = async (query: string) => {
     const res = await axios.get(
       `${FINNHUB_BASE_URL}search?q=${query}&token=${FINNHUB_API_KEY}`
     );
-    console.log(res);
     return res.data;
   } catch (error) {
     console.log(error);
