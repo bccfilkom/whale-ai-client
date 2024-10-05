@@ -23,11 +23,11 @@ const Sidebar = () => {
     }
   };
   return (
-    <aside className="w-full max-w-[20vw] bg-gray min-h-screen p-14 flex flex-col gap-12">
-      <div className="flex flex-col gap-12 fixed">
+    <aside className="w-full xl:w-[25vw] 2xl:w-[20vw] bg-gray min-h-screen p-14 hidden xl:flex flex-col gap-12">
+      <div className="flex flex-col gap-12">
         <Link
-          href="/dashboard"
-          className="text-3xl font-semibold text-white flex gap-4 items-center"
+          href="/"
+          className="text-xl 2xl:text-3xl font-semibold text-white flex gap-4 items-center"
         >
           <Image alt="nav-logo" src={navLogo} />
           <h3>WhaleAI</h3>
@@ -38,7 +38,7 @@ const Sidebar = () => {
               <Link className="w-full" href={item.link} key={item.title}>
                 <Button
                   variant={isActive(item.link) ? "primary" : "transparent"}
-                  className="w-full flex items-center gap-6"
+                  className="xl:px-1.5 2xl:px-3 w-full flex justify-center 2xl:justify-start items-center gap-2 2xl:gap-6 xl:text-sm 2xl:text-base"
                 >
                   <Image src={item.image} alt="" />
                   {item.title}

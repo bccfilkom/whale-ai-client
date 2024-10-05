@@ -12,9 +12,9 @@ const HighlightStockTable = ({
   link: string | null;
 }) => {
   return (
-    <div className="text-base-black rounded-3xl bg-gray/50 p-9 text-white font-normal">
+    <div className="text-base-black rounded-3xl bg-gray/50 p-3 md:p-9 text-white font-normal w-full overflow-x-auto">
       <div className="flex justify-between gap-4 text-lg">
-        <h4 className="font-bold ">{title}</h4>
+        <h4 className="font-bold">{title}</h4>
         {link && (
           <Link
             href={link}
@@ -24,54 +24,37 @@ const HighlightStockTable = ({
           </Link>
         )}
       </div>
-      <table className="w-full max-w-full">
+      <table className="w-full table-auto mt-4">
         <thead className="w-full text-[#7E7E7E]">
-          <tr className="flex justify-between py-4">
-            <th className="font-semibold text-start columns-2 w-3/12">
-              Symbol
-            </th>
-            <th className="font-semibold text-center columns-1 w-2/12">
-              Price
-            </th>
-            <th className="font-semibold text-center columns-1 w-2/12">
-              Change
-            </th>
-            <th className="font-semibold text-end columns-1 w-5/12">%Change</th>
-            {/* <th className="font-medium columns-1">Volume</th> */}
+          <tr className="text-left">
+            <th className="font-semibold text-start w-3/12">Symbol</th>
+            <th className="font-semibold text-center w-2/12">Price</th>
+            <th className="font-semibold text-center w-2/12">Change</th>
+            <th className="font-semibold text-center w-5/12">%Change</th>
           </tr>
         </thead>
-        <tbody className="mt-2 w-full">
-          {stocks.slice(0, 9).map((stock) => {
-            return (
-              <tr
-                key={stock.ticker}
-                className="flex text-sm lg:text-base justify-between py-2 w-full"
-              >
-                <td className="columns-2 text-start w-3/12">{stock.ticker}</td>
-                <td className="columns-1 w-2/12 text-center">{stock.price}</td>
-                <td className="columns-1 w-2/12 text-center">
-                  {stock.change_amount}
-                </td>
-                <td className="columns-1 w-5/12 flex justify-end pr-1">
-                  {stock.change_percentage.charAt(0) === "-" ? (
-                    <span className="flex items-center bg-[#FBD7D7] py-0.5 px-3 rounded-lg">
-                      <p className="text-[#B00B0B]">
-                        {stock.change_percentage}
-                      </p>
-                    </span>
-                  ) : (
-                    <div className="flex items-center bg-[#D7FBE6] py-0.5 px-3 rounded-lg">
-                      <span className="text-[#0BB06A]">
-                        +{stock.change_percentage}
-                      </span>
-                    </div>
-                  )}
-                </td>
-
-                {/* <td className="columns-1">{stock.volume}</td> */}
-              </tr>
-            );
-          })}
+        <tbody className="mt-4 w-full">
+          {stocks.slice(0, 9).map((stock) => (
+            <tr key={stock.ticker} className="text-sm lg:text-base py-2">
+              <td className="py-1.5 text-start w-3/12">{stock.ticker}</td>
+              <td className="py-1.5 text-center w-2/12">{stock.price}</td>
+              <td className="py-1.5 text-center w-2/12">{stock.change_amount}</td>
+              <td className="py-1.5 pr-1 w-5/12">
+                <div className="flex items-center justify-center">
+                {stock.change_percentage.charAt(0) === "-" ? (
+                  <span className="flex items-center bg-[#FBD7D7] py-0.5 px-3 rounded-lg">
+                    <p className="text-[#B00B0B]">{stock.change_percentage}</p>
+                  </span>
+                ) : (
+                  <span className="flex items-center bg-[#D7FBE6] py-0.5 px-3 rounded-lg">
+                    <p className="text-[#0BB06A]">{stock.change_percentage}</p>
+                  </span>
+                )}
+                </div>
+                
+              </td>
+            </tr>
+          ))}
         </tbody>
       </table>
     </div>

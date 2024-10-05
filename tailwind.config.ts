@@ -1,6 +1,7 @@
 import type { Config } from "tailwindcss";
 
 const config: Config = {
+  darkMode: ["class"],
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -9,25 +10,18 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Base colors
         black: "#0F0F0F",
         white: "#FAFAFA",
         gray: "#23232380",
-
-        // Primary colors
         "light-blue-text": "#71BFFF",
         blue: "#256BED",
         "blue-end": "#004B9E",
         "black-start": "#1A1A1A",
         "black-end": "#000710",
-
-        // Secondary colors
         green: "#0B806A",
         "light-green": "#D7FBE6",
         red: "#B00B0B",
         "light-red": "#FBD7D7",
-
-        //other
         success: {
           "100": "#20793A",
           "80": "#2AA24E",
@@ -67,8 +61,13 @@ const config: Config = {
           "2xl": "2rem",
         },
       },
+      borderRadius: {
+        lg: "var(--radius)",
+        md: "calc(var(--radius) - 2px)",
+        sm: "calc(var(--radius) - 4px)",
+      },
     },
   },
-  plugins: [],
+  plugins: [require("tailwindcss-animate")],
 };
 export default config;

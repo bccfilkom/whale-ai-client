@@ -6,6 +6,7 @@ import "./globals.css";
 import ProgressBar from "@/components/progress-bar";
 
 export const metadata: Metadata = {
+  icons:'/favicon.svg',
   title: "Whale AI",
   description:
     "Connecting Everyday Investors to Stock Market Opportunities. We simplify stock trading with tailored insights and tools, making it easy for anyone to grow their portfolio confidently.",
