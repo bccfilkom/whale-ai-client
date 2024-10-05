@@ -9,7 +9,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 export const variantStyles = {
   primary:
     "bg-gradient-to-r from-gradient-blue-start to-gradient-blue-end text-white hover:bg-light-blue-text ",
-  white: "bg-white text-black hover:bg-gray/10",
+  white: "bg-white text-black hover:bg-neutral-200",
   transparent: "bg-transparent hover:bg-black",
 };
 
