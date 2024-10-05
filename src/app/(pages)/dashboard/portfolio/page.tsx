@@ -19,10 +19,11 @@ export default async function DashboardAssetsPage({
   const userAssetsData = userAssets?.data as Assets[] | null;
   const { getHighlightStocks } = await import("@/services/stocks");
   const recommendationStocks =
-    (await getHighlightStocks()) as HighlightStockResponse;
+    (await getHighlightStocks()) as HighlightStockResponse | null;
   const { searchStocks } = await import("@/services/stocks");
   const stocks = await searchStocks(query);
-  const stocksData = stocks?.result as StockSearch[];
+  const stocksData = stocks?.result as StockSearch[] | null;
+
   return (
     <>
       {userAssetsData ? (
@@ -33,7 +34,7 @@ export default async function DashboardAssetsPage({
                 My Portfolio
               </h2>
               <PortfolioTable userAssets={userAssetsData} />
-              <AddAsset stocks={stocksData} />
+              <AddAsset stocks={stocksData || []} />
             </div>
             <div className="flex flex-col gap-9 max-w-full xl:col-span-3">
               <h2 className="text-xl text-white md:text-3xl font-bold">
@@ -41,11 +42,15 @@ export default async function DashboardAssetsPage({
               </h2>
               <div className="bg-gray/50 rounded-3xl text-white p-6 md:p-9 space-y-4 md:space-y-9 w-full">
                 <div className="flex flex-row gap-16 overflow-x-auto whitespace-nowrap pb-10">
-                  {recommendationStocks.top_gainers.map((stock) => {
-                    return (
+                  {recommendationStocks?.top_gainers?.length ? (
+                    recommendationStocks.top_gainers.map((stock) => (
                       <StockRecommendation key={stock.ticker} stock={stock} />
-                    );
-                  })}
+                    ))
+                  ) : (
+                    <p className="text-[#7E7E7E] text-base md:text-xl">
+                      No stock recommendations available.
+                    </p>
+                  )}
                 </div>
               </div>
             </div>
@@ -77,7 +82,7 @@ export default async function DashboardAssetsPage({
               Let us know the stocks you own, and we will tailor our
               recommendations just for you!
             </p>
-            <AddAsset stocks={stocksData} />
+            <AddAsset stocks={stocksData || []} />
           </div>
         </main>
       )}
