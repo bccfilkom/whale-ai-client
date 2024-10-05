@@ -22,7 +22,7 @@ export default async function DashboardAssetsPage({
     (await getHighlightStocks()) as HighlightStockResponse;
   const { searchStocks } = await import("@/services/stocks");
   const stocks = await searchStocks(query);
-  const stocksData = stocks.result as StockSearch[];
+  const stocksData = stocks?.result as StockSearch[];
   return (
     <>
       {userAssetsData ? (
