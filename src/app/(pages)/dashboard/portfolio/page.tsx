@@ -8,6 +8,7 @@ import StockRecommendation from "@/components/stock-recomendation";
 import { StockSearch } from "@/types/stocks/search";
 import Button from "@/components/button";
 import AddAsset from "@/app/sections/dashboard/portfolio/AddAsset";
+import Link from "next/link";
 
 export default async function DashboardAssetsPage({
   searchParams,
@@ -83,7 +84,21 @@ export default async function DashboardAssetsPage({
               </div>
             </div>
           </section>
-          <section className="py-10 xl:py-16">
+          <section className="py-16 xl:py-24 flex-col gap-12 items-center w-full flex justify-center">
+            <div className="flex flex-col gap-6 items-center">
+              <h3 className="text-xl md:text-2xl xl:text-3xl text-white font-bold">
+                Want Better Stock Recommendations? Complete Your Risk Profile!
+              </h3>
+              <p className="text-[#7E7E7E] text-base md:text-xl">
+                Complete your risk profile for smarter, personalized stock picks
+                that fit your goals.
+              </p>
+            </div>
+            <Link href={"/risk-profile"}>
+              <Button className="text-xl xl:text-3xl" rounded="4xl">
+                Take Quiz
+              </Button>
+            </Link>
           </section>
         </main>
       ) : (
